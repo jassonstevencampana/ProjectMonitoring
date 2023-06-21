@@ -30,10 +30,16 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/theme-sb/vendor/fontawesome-free/css/all.min.css",
+              "src/theme-sb/sb-admin-2.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/theme-sb/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "node_modules/jquery.easing/jquery.easing.min.js",
+              "src/theme-sb/sb-admin-2.min.js"
+            ]
           },
           "configurations": {
             "production": {
