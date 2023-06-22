@@ -5,6 +5,7 @@ Chart.register(...registerables);
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
@@ -45,7 +46,33 @@ export class HomeComponent implements OnInit {
         }
       }
     });
+
+
+
+    new Chart("myPieChart", {
+      type: 'pie', //this denotes tha type of chart
+
+      data: {// values on X-Axis
+        // labels: ['Red', 'Pink', 'Green'],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [300, 240, 100],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          hoverOffset: 4
+        }],
+      },
+      options: {
+      }
+
+    });
   }
-
-
 }
