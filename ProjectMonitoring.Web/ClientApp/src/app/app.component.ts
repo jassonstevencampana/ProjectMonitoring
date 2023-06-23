@@ -5,5 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app';
+
+
+  toggleSidenavbar() {
+
+    let elem = document.getElementById("accordionSidebar");
+    elem?.classList.toggle("toggled");
+
+    let body = document.getElementById("page-top");
+    body?.classList.toggle("sidebar-toggled");
+  }
 }
