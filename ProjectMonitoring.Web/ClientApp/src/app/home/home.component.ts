@@ -49,30 +49,40 @@ export class HomeComponent implements OnInit {
 
 
 
-    new Chart("myPieChart", {
-      type: 'pie', //this denotes tha type of chart
-
+    new Chart("statoProgetti", {
+      type: 'doughnut', //this denotes tha type of chart
       data: {// values on X-Axis
-        // labels: ['Red', 'Pink', 'Green'],
+        labels: ['Completati', 'In corso', 'In ritardo', 'In attesa', 'In pipe'],
         datasets: [{
-          label: 'My First Dataset',
-          data: [300, 240, 100],
+          label: 'Nr. progetti',
+          data: [2, 7, 2, 1, 15],
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
+            'rgba(28, 200, 138, 0.4)',
+            'rgba(78, 115, 223, 0.4)',
+            'rgba(231, 74, 59, 0.4)',
+            'rgba(246, 194, 62, 0.4)',
+            'rgba(54, 185, 204, 0.4)'
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)'
+            'rgba(28, 200, 138, 1)',
+            'rgba(78, 115, 223, 1)',
+            'rgba(231, 74, 59, 1)',
+            'rgba(246, 194, 62, 1)',
+            'rgba(54, 185, 204, 1)'
           ],
-          hoverOffset: 4
+          hoverOffset: 4,
         }],
       },
       options: {
-      }
+        plugins: {
+          legend: {
+            position: "right",
+          }
+        },
 
+
+        maintainAspectRatio: false
+      }
     });
   }
 }
