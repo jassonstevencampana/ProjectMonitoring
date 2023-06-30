@@ -3,7 +3,27 @@
 /* Provide sufficient contrast against white background */
 
 
-.img-profile {
+.img-profile,
+.img-placeholder {
   height: 2rem;
   width: 2rem;
+}
+
+.img-placeholder {
+  border: 1px solid gainsboro;
+  border-radius: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.resources {
+  display: flex;
+  flex-direction: row;
+
+  .img-profile,
+  .img-placeholder {
+    margin-right: 10px;
+  }
+
 }
