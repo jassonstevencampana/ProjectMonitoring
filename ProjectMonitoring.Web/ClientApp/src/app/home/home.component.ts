@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import DatalabelsPlugin from 'chartjs-plugin-datalabels';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-home',
@@ -9,80 +10,79 @@ Chart.register(...registerables);
 })
 export class HomeComponent implements OnInit {
 
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   ngOnInit(): void {
-
-    new Chart("myAreaChart", {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-
-
-
-    new Chart("statoProgetti", {
-      type: 'doughnut', //this denotes tha type of chart
-      data: {// values on X-Axis
-        labels: ['Completati', 'In corso', 'In ritardo', 'In attesa', 'In pipe'],
-        datasets: [{
-          label: 'Nr. progetti',
-          data: [2, 7, 2, 1, 15],
-          backgroundColor: [
-            'rgba(28, 200, 138, 0.4)',
-            'rgba(78, 115, 223, 0.4)',
-            'rgba(231, 74, 59, 0.4)',
-            'rgba(246, 194, 62, 0.4)',
-            'rgba(54, 185, 204, 0.4)'
-          ],
-          borderColor: [
-            'rgba(28, 200, 138, 1)',
-            'rgba(78, 115, 223, 1)',
-            'rgba(231, 74, 59, 1)',
-            'rgba(246, 194, 62, 1)',
-            'rgba(54, 185, 204, 1)'
-          ],
-          hoverOffset: 4,
-        }],
-      },
-      options: {
-        plugins: {
-          legend: {
-            position: "right",
-          }
-        },
-
-
-        maintainAspectRatio: false
-      }
-    });
   }
+
+  //STATO PROGETTI (%)
+  public doughnutChartOptions: ChartConfiguration['options'] = {
+    maintainAspectRatio: false,
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'right',
+      },
+      datalabels: {
+        formatter: (value, ctx) => {
+          let sum = 0;
+          let dataArr: any[] = ctx.chart.data.datasets[0].data; 45
+
+          dataArr.map((data: number) => {
+            sum += data;
+          });
+          let percentage = (value * 100 / sum).toFixed(2) + "%";
+          return percentage;
+        },
+        backgroundColor: "white"
+      },
+    }
+  };
+  public doughnutChartData: ChartData<'doughnut', number[], string | string[]> = {
+    labels: ['Completati', 'In corso', 'In ritardo', 'In attesa', 'In pipe'],
+    datasets: [{
+      data: [2, 7, 2, 1, 15], backgroundColor: ["#49D3A1", "#5EC7D6", "#EB6E62", "#F7CE64", "#718FE5"]
+    }]
+  };
+  public doughnutChartType: ChartType = 'doughnut';
+  public doughnutChartPlugins = [DatalabelsPlugin];
+
+
+
+  //STATO AVANZAMENTO PROGETTI
+  public barChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: {
+      x: {},
+      y: {
+        min: 1
+      }
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        backgroundColor: "gainsboro"
+      }
+    }
+  };
+  public barChartType: ChartType = 'bar';
+  public barChartPlugins = [
+    DatalabelsPlugin
+  ];
+
+  public barChartData: ChartData<'bar'> = {
+    labels: ['PRJ 1', 'PRJ 2', 'PRJ 3', 'PRJ 4', 'PRJ 5', 'PRJ 6'],
+    datasets: [
+      { data: [15, 15, 7, 20, 22, 13, 10], label: 'GG schedulate', backgroundColor: "#718FE5" },
+      { data: [2, 3, 1, 23, 30, 10, 4], label: 'GG consumate', backgroundColor: "#FD9742" }
+    ]
+  };
+
+
 }
