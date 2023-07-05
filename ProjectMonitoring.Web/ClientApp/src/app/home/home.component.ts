@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { BaseChartDirective } from 'ng2-charts';
+import { LanguageDataTables } from 'src/helpers/language.datatables';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,13 @@ import { BaseChartDirective } from 'ng2-charts';
 export class HomeComponent implements OnInit {
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  dtOptions: DataTables.Settings = {
+    language: LanguageDataTables.italian_datatables,
+    lengthMenu: [5],
+    dom: "Bfrtip"
+  };
+
 
   ngOnInit(): void {
   }

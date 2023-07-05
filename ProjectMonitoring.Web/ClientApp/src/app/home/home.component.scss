@@ -1,3 +1,35 @@
-.card.chart {
-  min-height: 400px;
+.card.chart,
+.card-body.datatable,
+.card-body.projects {
+  min-height: 480px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+
+
+.project {
+  display: flex;
+  flex-direction: row;
+
+  .prj-progress {
+    width: 40%;
+  }
+}
+
+.resources-area {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+
+  .resources {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .img-profile,
+  .img-placeholder {
+    margin-right: 10px;
+  }
+
 }

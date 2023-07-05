@@ -35,13 +35,15 @@
 						"styles": [
 							"src/theme-sb/vendor/fontawesome-free/css/all.min.css",
 							"src/theme-sb/sb-admin-2.min.css",
+							"node_modules/datatables.net-dt/css/jquery.dataTables.min.css",
 							"src/styles.scss"
 						],
 						"scripts": [
 							"node_modules/jquery/dist/jquery.min.js",
 							"src/theme-sb/vendor/bootstrap/js/bootstrap.bundle.min.js",
 							"node_modules/jquery.easing/jquery.easing.min.js",
-							"src/theme-sb/sb-admin-2.min.js"
+							"src/theme-sb/sb-admin-2.min.js",
+							"node_modules/datatables.net/js/jquery.dataTables.min.js"
 						]
 					},
 					"configurations": {
