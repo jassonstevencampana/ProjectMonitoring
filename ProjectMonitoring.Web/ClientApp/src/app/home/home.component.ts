@@ -11,6 +11,10 @@ import { LanguageDataTables } from 'src/helpers/language.datatables';
 })
 export class HomeComponent implements OnInit {
 
+  constructor() {
+
+  }
+
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   dtOptions: DataTables.Settings = {

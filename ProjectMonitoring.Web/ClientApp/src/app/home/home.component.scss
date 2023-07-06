@@ -8,19 +8,10 @@
 
 
 
-.project {
-  display: flex;
-  flex-direction: row;
-
-  .prj-progress {
-    width: 40%;
-  }
-}
 
 .resources-area {
   display: flex;
   flex-direction: column;
-  padding-left: 40px;
 
   .resources {
     display: flex;
