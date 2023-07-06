@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { log } from 'console';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,6 @@ import { log } from 'console';
 export class AppComponent implements OnInit {
 
   constructor() {
-    log
 
   }
 
